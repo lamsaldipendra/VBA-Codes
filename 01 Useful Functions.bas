@@ -1,5 +1,4 @@
-'''''Function to check if the file is opened and locked by another user'''''''
-
+            '''''Function to check if the file is opened and locked by another user'''''''
 Function FileLocked(strFileName As String) As Boolean
 
 On Error Resume Next
@@ -19,7 +18,7 @@ End If
 End Function
 
 
-'''''' Code to perform the filelock check '''''''
+                '''''' Code to perform the filelock check '''''''
 TryAgain:
 If Not FileLocked("Filenamewithpath") Then
 Workbooks.Open FileName:="Filenamewithpath", UpdateLinks:=0, ReadOnly:=False
@@ -35,8 +34,8 @@ Workbooks.Open FileName:="Filenamewithpath", UpdateLinks:=0, ReadOnly:=False
     End If
     End If
 
-'''''' Code to open file select browser and allow to select file '''''''
 
+            '''''' Code to open file select browser and allow to select file '''''''
 Sub BrowseDataFile()
 
 Dim DataFile As FileDialog
@@ -60,4 +59,9 @@ With Sheet3
 .Range("U11") = "Mapped on: " & Format(Now, "dd-Mmm-yy, hh:mm:ss AM/PM")
 End With
     
-'''''''
+NoSel:
+
+End With
+End Sub
+    
+                '''''''
