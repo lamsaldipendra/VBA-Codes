@@ -1,4 +1,5 @@
             '''''Function to check if the file is opened and locked by another user'''''''
+
 Function FileLocked(strFileName As String) As Boolean
 
 On Error Resume Next
@@ -19,6 +20,7 @@ End Function
 
 
                 '''''' Code to perform the filelock check '''''''
+
 TryAgain:
 If Not FileLocked("Filenamewithpath") Then
 Workbooks.Open FileName:="Filenamewithpath", UpdateLinks:=0, ReadOnly:=False
@@ -36,6 +38,7 @@ Workbooks.Open FileName:="Filenamewithpath", UpdateLinks:=0, ReadOnly:=False
 
 
             '''''' Code to open file select browser and allow to select file '''''''
+
 Sub BrowseDataFile()
 
 Dim DataFile As FileDialog
@@ -64,4 +67,22 @@ NoSel:
 End With
 End Sub
     
-                '''''''
+''''''' Advanced Filter function'''''''''
+
+Sub FilterData()
+
+Application.ScreenUpdating = False
+
+            Set SourceBook = Application.Workbooks.Open("workbooktoimportfromwithPath")
+            Set SourceRange = SourceBook.Worksheets("SheetName").Range("CellAddress").CurrentRegion
+            Set Criteria = CriteriaSheet.Range("CriteriaRange")
+            Set Output = Outputsheet.Range("OutputRange")
+
+            SourceRange.AdvancedFilter xlFilterCopy, Criteria, Output
+            
+            SourceBook.Close savechanges:=False
+                               
+    
+Application.ScreenUpdating = True
+
+End Sub
