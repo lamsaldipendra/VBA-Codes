@@ -67,7 +67,7 @@ NoSel:
 End With
 End Sub
     
-''''''' Advanced Filter function'''''''''
+            ''''''' Advanced Filter function'''''''''
 
 Sub FilterData()
 
@@ -84,5 +84,47 @@ Application.ScreenUpdating = False
                                
     
 Application.ScreenUpdating = True
+
+End Sub
+                        
+            '''''''''' Array to Range '''''''''''
+                        
+Sub arrayindex() ' most useful
+
+    ActiveWorkbook.Worksheets("Test").Cells.Clear
+
+    Dim arrayData(1 To 5) As Variant
+    arrayData(1) = "A"
+    arrayData(2) = "B"
+    arrayData(3) = "C"
+    arrayData(4) = "D"
+    arrayData(5) = "E"
+
+    Dim rngTarget As Range
+    Set rngTarget = ActiveWorkbook.Worksheets("Test").Range("A1:E1")
+    rngTarget = arrayData
+
+End Sub
+
+Sub testcolumn()
+
+    ActiveWorkbook.Worksheets("Test").Cells.Clear
+
+    Dim arrayData(1 To 1, 1 To 5) As Variant
+    arrayData(1, 1) = "A"
+    arrayData(1, 2) = "B"
+    arrayData(1, 3) = "C"
+    arrayData(1, 4) = "D"
+    arrayData(1, 5) = "E"
+
+    Dim rngTarget As Range
+    Set rngTarget = ActiveWorkbook.Worksheets("Test").Range("A1:E1")
+    rngTarget = arrayData
+
+End Sub
+
+Sub testrow()
+
+MsgBox ThisWorkbook.Worksheets("WEXCB").Range("A" & ThisWorkbook.Worksheets("WEXCB").Rows.Count).End(xlUp).Row
 
 End Sub
